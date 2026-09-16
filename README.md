@@ -2,7 +2,7 @@
 
 Engineering notes for putting an **AI API relay** in front of image workloads: which request headers matter, how to retry an asynchronous image2.5 task safely, how to poll without hammering the gateway, and how a flat per-image route changes capacity planning.
 
-**Attributed entry points:** [Open GPT Image 2.5 on APIMart](https://apimart.ai/model/gpt-image-2-5) · [Current pricing](https://apimart.ai/pricing) · [Endpoint documentation](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation)
+**Attributed entry points:** [Open GPT Image 2.5 on APIMart](https://apimart.ai/model/gpt-image-2-5?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=hub) · [Current pricing](https://apimart.ai/pricing?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=pricing) · [Endpoint documentation](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=docs)
 
 ## Contents
 
@@ -54,7 +54,7 @@ Both relayed variants accept `resolution` `1K` / `2K` / `4K`, ten aspect ratios 
 | version | 1K | 2K | 4K | billing unit |
 | --- | --- | --- | --- | --- |
 | `flare` | $0.0085 | $0.014 | $0.021 | per delivered image |
-| `sunburst` | $0.0085 | check live pricing | check live pricing | per delivered image |
+| `sunburst` | $0.0085 | $0.014 | check live pricing | per delivered image |
 
 Per-image billing on the relayed route is charged for delivered images, and the task response reports the exact amount in `cost` / `credits_cost`, so the table above can be re-verified after a single paid call. The official `gpt-image-2.5-flare` / `gpt-image-2.5-sunburst` route is token-billed with a `low → medium → high → xhigh → max` quality ladder, which is why this repository keeps both the flat per-image expectation and the token-billed option side by side. Snapshot date: 2026-09-16.
 
@@ -145,7 +145,7 @@ curl --request POST --url https://api.apimart.ai/v1/images/generations \
   --data '{"model":"gpt-image-2.5-sunburst","prompt":"Preserve the product label, replace the background with soft off-white, add a natural cast shadow","size":"1:1","resolution":"1k","quality":"high","n":1}'
 ```
 
-Full field reference: [official route docs](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation) and the same attributed entry point for the ext route.
+Full field reference: [official route docs](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=docs) and the same attributed entry point for the ext route.
 
 ## Request and response reference (ext route)
 
@@ -229,9 +229,9 @@ Every outbound link in this repository points at APIMart through a short link, s
 
 | Purpose | Attributed link | Target |
 | --- | --- | --- |
-| Open GPT Image 2.5 on APIMart | <https://apimart.ai/model/gpt-image-2-5> | `apimart.ai/model/gpt-image-2-5` |
-| Current APIMart pricing | <https://apimart.ai/pricing> | `apimart.ai/pricing` |
-| Endpoint documentation (ext route) | <https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation> | `docs.apimart.ai` |
+| Open GPT Image 2.5 on APIMart | <https://apimart.ai/model/gpt-image-2-5?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=hub> | `apimart.ai/model/gpt-image-2-5` |
+| Current APIMart pricing | <https://apimart.ai/pricing?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=pricing> | `apimart.ai/pricing` |
+| Endpoint documentation (ext route) | <https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=docs> | `docs.apimart.ai` |
 
 - [ ] Attribution target: `go.apimart.ai` short links above (302 with `utm_source=kol_sponsor&utm_medium=sponsor`).
 - [ ] Re-check the price on the pricing page before a production run: promotional routing can change.
