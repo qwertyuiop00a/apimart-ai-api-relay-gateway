@@ -2,7 +2,7 @@
 
 Engineering notes for putting an **AI API relay** in front of image workloads: which request headers matter, how to retry an asynchronous image2.5 task safely, how to poll without hammering the gateway, and how a flat per-image route changes capacity planning.
 
-**Attributed entry points:** [Open GPT Image 2.5 on APIMart](https://apimart.ai/model/gpt-image-2-5?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=hub) · [Current pricing](https://apimart.ai/pricing?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=pricing) · [Endpoint documentation](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=docs)
+**Attributed entry points:** [Open GPT Image 2.5 on APIMart](https://go.apimart.ai/k-59cd25) · [Current pricing](https://go.apimart.ai/k-80ac8c) · [Get an API key](https://go.apimart.ai/k-a926cd)
 
 ## Contents
 
@@ -145,7 +145,7 @@ curl --request POST --url https://api.apimart.ai/v1/images/generations \
   --data '{"model":"gpt-image-2.5-sunburst","prompt":"Preserve the product label, replace the background with soft off-white, add a natural cast shadow","size":"1:1","resolution":"1k","quality":"high","n":1}'
 ```
 
-Full field reference: [official route docs](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=docs) and the same attributed entry point for the ext route.
+Full field reference: [official route docs](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5/generation) and [ext route docs](https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation). Get a key at [apimart.ai/keys](https://go.apimart.ai/k-a926cd).
 
 ## Request and response reference (ext route)
 
@@ -229,11 +229,11 @@ Every outbound link in this repository points at APIMart through a short link, s
 
 | Purpose | Attributed link | Target |
 | --- | --- | --- |
-| Open GPT Image 2.5 on APIMart | <https://apimart.ai/model/gpt-image-2-5?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=hub> | `apimart.ai/model/gpt-image-2-5` |
-| Current APIMart pricing | <https://apimart.ai/pricing?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=pricing> | `apimart.ai/pricing` |
-| Endpoint documentation (ext route) | <https://docs.apimart.ai/en/api-reference/images/gpt-image-2.5-ext/generation?utm_source=github&utm_medium=repository&utm_campaign=image2.5-api-github-2026&utm_content=docs> | `docs.apimart.ai` |
+| Open GPT Image 2.5 on APIMart | <https://go.apimart.ai/k-59cd25> | `apimart.ai/model/gpt-image-2-5` |
+| Current APIMart pricing | <https://go.apimart.ai/k-80ac8c> | `apimart.ai/pricing` |
+| Get an API key on APIMart | <https://go.apimart.ai/k-a926cd> | `apimart.ai/keys` |
 
-- [ ] Attribution target: `go.apimart.ai` short links above (302 with `utm_source=kol_sponsor&utm_medium=sponsor`).
+- [ ] Attribution target: the three `go.apimart.ai` short links above (302 with `utm_source=kol_sponsor&utm_medium=sponsor`); the endpoint docs at `docs.apimart.ai` are referenced without a short link because the link service only accepts the `apimart.ai` domain.
 - [ ] Re-check the price on the pricing page before a production run: promotional routing can change.
 
 ## Disclosure
