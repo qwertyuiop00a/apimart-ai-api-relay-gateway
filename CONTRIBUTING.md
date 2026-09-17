@@ -1,16 +1,17 @@
 # Contributing
 
-Useful contributions to this repository:
+Useful contributions:
 
-1. A prompt recipe that reliably produces a usable asset (prompt + output + `version` + aspect ratio).
-2. A correction to the pricing or limit notes, with the source page and the date you checked it.
-3. A client example in another language that keeps the same submit → poll → download lifecycle.
+1. A gateway failure mode with the retry rule that fixes it (and the rule that would make it worse).
+2. A comparison row we are missing: a gateway, its billing unit, its timeout semantics or its observability surface.
+3. A client implementation in another language that keeps the same retry, idempotency and polling contract.
 
 Before opening a pull request:
 
 ```bash
-python3 tools/check_links.py          # attribution links and prompt data
+python tools/check_links.py
+python examples/gateway_client.py --dry-run --task image
 ```
 
-Rules: keep every APIMart link attributed through its `go.apimart.ai` short link, never commit API keys, and do not
-paste outputs that contain third-party trademarks you have no right to publish.
+Rules: every APIMart link must be an API-minted `go.apimart.ai` short link, credentials never get committed, and do not
+describe a gateway as "full compatibility" for a surface you have not exercised.

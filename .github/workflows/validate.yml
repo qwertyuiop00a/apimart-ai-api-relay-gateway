@@ -6,12 +6,16 @@ on:
   pull_request:
 
 jobs:
-  links-and-data:
+  guard:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Attribution and prompt data check
-        run: python3 tools/check_links.py
+      - name: Attribution check
+        run: python tools/check_links.py
+      - name: Smoke-test the gateway client
+        run: |
+          python examples/gateway_client.py --dry-run --task image
+          python examples/gateway_client.py --dry-run --task text
